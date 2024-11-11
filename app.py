@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 from tensorflow.keras.preprocessing.image import img_to_array
 from io import BytesIO
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 model = load_model("D:\\PLANT_Disease\\plant_disease_detection-main\\plant_disease_detection-main\\model.h5")
 print('Model loaded. Check http://127.0.0.1:5000/')
@@ -43,5 +43,5 @@ def upload():
         return str(predicted_label)
     return None
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
