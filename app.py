@@ -12,7 +12,7 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-model = load_model("D:\\PLANT_Disease\\plant_disease_detection-main\\plant_disease_detection-main\\model.h5")
+model = load_model("model.h5")
 print('Model loaded. Check http://127.0.0.1:5000/')
 
 labels = {0: 'Healthy', 1: 'Powdery', 2: 'Rust'}
