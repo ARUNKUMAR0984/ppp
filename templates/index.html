@@ -61,13 +61,6 @@
             font-size: 18px;
             font-weight: bold;
         }
-        #image-preview {
-            margin-top: 20px;
-            max-width: 100%;
-            max-height: 300px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -77,21 +70,14 @@
     <p>Select an image of a plant leaf to predict if it's healthy or diseased.</p>
     <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <input type="file" name="file" accept="image/*" required onchange="previewImage(event)">
+            <input type="file" name="file" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Predict</button>
     </form>
     <div id="result" class="mt-3"></div>
-    <img id="image-preview" src="#" alt="Image preview" style="display:none;">
 </div>
 
 <script>
-    async function previewImage(event) {
-        const imagePreview = document.getElementById('image-preview');
-        imagePreview.src = URL.createObjectURL(event.target.files[0]);
-        imagePreview.style.display = 'block';
-    }
-
     document.getElementById('upload-form').onsubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -100,7 +86,7 @@
             body: formData
         });
         const result = await response.text();
-        document.getElementById('result').innerHTML = <h4>Prediction: ${result}</h4>;
+        document.getElementById('result').innerHTML = `<h4>Prediction: ${result}</h4>`;
     };
 </script>
 
