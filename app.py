@@ -8,7 +8,7 @@ from keras.models import load_model
 from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
-app = Flask(_name_)
+app = Flask(__name__)
 
 model =load_model("model.h5")
 print('Model loaded. Check http://127.0.0.1:5000/')
